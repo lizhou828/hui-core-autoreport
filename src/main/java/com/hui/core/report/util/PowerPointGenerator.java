@@ -141,11 +141,12 @@ public class PowerPointGenerator {
 
         List<XSLFShape> shapeList = slide.getShapes();
 
+        //当一页有多个表格的时候
+        int tableNum = 0;
         for (XSLFShape shape : shapeList) {
             Map<String, String> textMap = slideData.getTextMap();
             List<TableData> tableDataList = slideData.getTableDataList();
-            //当一页有多个表格的时候
-            int tableNum = 0;
+
             //判断文本框
             if (shape instanceof XSLFTextShape) {
                 generatorTextBox((XSLFTextShape) shape, textMap);
@@ -154,9 +155,9 @@ public class PowerPointGenerator {
             if (shape instanceof XSLFTable) {
                 List<TableRowData> tableRowDataList = tableDataList.get(tableNum).getTableRowDataList();
                 generatorTable((XSLFTable) shape, tableRowDataList);
-
+                tableNum++;
             }
-            tableNum++;
+
         }
 
     }
