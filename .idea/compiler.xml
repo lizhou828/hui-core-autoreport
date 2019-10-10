@@ -9,5 +9,8 @@
         <module name="hui-core-autoreport" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hui-core-autoreport" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
